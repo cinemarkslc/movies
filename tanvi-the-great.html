@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Cinemas - Experience Movie Magic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0a0a1a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to bottom, #0a0a1a, #1a1a2e);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            font-size: 2.5rem;
+            color: #ff4d4d;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff4d4d, #ffcc00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ff4d4d;
+        }
+        
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-actions a {
+            color: #fff;
+            margin-left: 20px;
+            font-size: 1.2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff4d4d, #ff9900);
+            color: white;
+            padding: 12px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 77, 77, 0.4);
+        }
+        
+        /* Featured Movie */
+        .featured-movie {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, #1a1a2e, #0f0c29);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #ff4d4d, #ff9900);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .movie-card {
+            background: rgba(30, 30, 46, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+        }
+        
+        .movie-poster {
+            flex: 1;
+            position: relative;
+        }
+        
+        .movie-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .movie-info {
+            flex: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .movie-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #ffcc00;
+        }
+        
+        .movie-meta {
+            display: flex;
+            margin-bottom: 20px;
+            color: #aaa;
+        }
+        
+        .movie-meta span {
+            margin-right: 20px;
+        }
+        
+        .movie-rating {
+            color: #ffcc00;
+            font-weight: bold;
+        }
+        
+        .movie-description {
+            line-height: 1.7;
+            margin-bottom: 25px;
+            color: #ddd;
+        }
+        
+        .showtimes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .showtime {
+            background: rgba(255, 77, 77, 0.2);
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .showtime:hover {
+            background: rgba(255, 77, 77, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0a1a;
+            padding: 40px 0 20px;
+            border-top: 1px solid #22223a;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ff4d4d;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #22223a;
+            color: white;
+            transition: background 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: #ff4d4d;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid #22223a;
+            color: #666;
+        }
+        
+        /* Prank Page Styles */
+        .prank-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: linear-gradient(to bottom, #1a1a2e, #0f0c29);
+        }
+        
+        .prank-card {
+            background: rgba(30, 30, 46, 0.9);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .prank-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ff4d4d, #ff9900);
+        }
+        
+        .prank-icon {
+            font-size: 6rem;
+            color: #ff4d4d;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .prank-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #ffcc00;
+            text-transform: uppercase;
+        }
+        
+        .prank-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #ff4d4d;
+        }
+        
+        .prank-message {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            color: #ddd;
+        }
+        
+        .compliance-roast {
+            background: rgba(255, 77, 77, 0.2);
+            border-left: 4px solid #ff4d4d;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: left;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .compliance-roast h3 {
+            color: #ffcc00;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .compliance-roast ul {
+            padding-left: 20px;
+        }
+        
+        .compliance-roast li {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .hacker-animation {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .terminal {
+            background: #000;
+            color: #0f0;
+            font-family: monospace;
+            padding: 20px;
+            border-radius: 5px;
+            width: 100%;
+            max-width: 600px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .terminal:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.2) 50%);
+            background-size: 100% 4px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .terminal-line {
+            animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0;
+            letter-spacing: 0.15em;
+            animation-fill-mode: forwards;
+            width: 0;
+        }
+        
+        .terminal-line:nth-child(1) { animation-delay: 0s; }
+        .terminal-line:nth-child(2) { animation-delay: 1s; }
+        .terminal-line:nth-child(3) { animation-delay: 2s; }
+        .terminal-line:nth-child(4) { animation-delay: 3s; }
+        .terminal-line:nth-child(5) { animation-delay: 4s; }
+        .terminal-line:nth-child(6) { animation-delay: 5s; }
+        .terminal-line:nth-child(7) { animation-delay: 6s; }
+        .terminal-line:nth-child(8) { animation-delay: 7s; }
+        .terminal-line:nth-child(9) { animation-delay: 8s; }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-right: 2px solid transparent; }
+            50% { border-right: 2px solid #0f0; }
+        }
+        
+        .prank-footer {
+            margin-top: 40px;
+            font-style: italic;
+            color: #aaa;
+        }
+        
+        .fact-section {
+            background: rgba(30, 30, 60, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            border: 1px dashed #ff4d4d;
+        }
+        
+        .fact-section h3 {
+            color: #ffcc00;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .fact-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(50, 50, 80, 0.3);
+            border-radius: 8px;
+        }
+        
+        .fact-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #ff9900;
+        }
+        
+        .fact-title i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .fact-content {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            padding-left: 35px;
+        }
+        
+        .chappal-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 30px;
+        }
+        
+        .chappal {
+            width: 100px;
+            height: 50px;
+            background: #8B4513;
+            border-radius: 50%;
+            position: relative;
+            transform: rotate(-10deg);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+        }
+        
+        .chappal:nth-child(even) {
+            background: #A0522D;
+            transform: rotate(10deg);
+        }
+        
+        .chappal-strap {
+            position: absolute;
+            width: 70px;
+            height: 10px;
+            background: #D2B48C;
+            border-radius: 5px;
+            top: 15px;
+            left: 15px;
+        }
+        
+        .color-match-example {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 20px;
+        }
+        
+        .outfit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .shirt {
+            width: 60px;
+            height: 80px;
+            background: #ff6b6b;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 5px;
+        }
+        
+        .pants {
+            width: 60px;
+            height: 70px;
+            background: #4ecdc4;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .shoes {
+            width: 70px;
+            height: 20px;
+            background: #ff6b6b;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        
+        .outfit:nth-child(2) .shirt {
+            background: #4ecdc4;
+        }
+        
+        .outfit:nth-child(2) .shoes {
+            background: #4ecdc4;
+        }
+        
+        .outfit:nth-child(3) .shirt {
+            background: #ffe66d;
+        }
+        
+        .outfit:nth-child(3) .shoes {
+            background: #ffe66d;
+        }
+        
+        /* Perfume Section Styles */
+        .compliance-violation {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 3px solid #ffd700;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .perfume-showcase {
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .perfume-bottle {
+            text-align: center;
+            width: 120px;
+        }
+        
+        .bottle {
+            position: relative;
+            height: 150px;
+            width: 60px;
+            margin: 0 auto;
+        }
+        
+        .bottle-neck {
+            width: 20px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.7);
+            margin: 0 auto;
+            border-radius: 3px 3px 0 0;
+        }
+        
+        .bottle-body {
+            width: 60px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+            position: absolute;
+            bottom: 0;
+        }
+        
+        .perfume-liquid {
+            position: absolute;
+            bottom: 5px;
+            width: 54px;
+            left: 3px;
+            height: 90px;
+            background: linear-gradient(to bottom, #f3e5ab, #e3c9a8);
+            border-radius: 3px;
+            animation: perfume-glow 3s infinite alternate;
+        }
+        
+        @keyframes perfume-glow {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        .perfume-bottle p {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+        
+        .violation-notice {
+            background: rgba(255, 100, 100, 0.15);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .violation-notice h5 {
+            color: #ff6b6b;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .violation-notice ul {
+            padding-left: 20px;
+        }
+        
+        .violation-notice li {
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        /* Secret Message Section */
+        .secret-message {
+            background: rgba(30, 30, 60, 0.7);
+            border: 1px solid #ffcc00;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .secret-title {
+            color: #ffcc00;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .secret-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            font-family: monospace;
+        }
+        
+        .secret-note {
+            font-style: italic;
+            color: #aaa;
+            margin-top: 15px;
+        }
+        
+        .bribery {
+            background: rgba(50, 150, 50, 0.2);
+            border: 2px dashed #4CAF50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .bribery-title {
+            color: #4CAF50;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .bribery-content {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .food-emoji {
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .movie-card {
+                flex-direction: column;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .prank-card {
+                padding: 30px;
+            }
+            
+            .prank-title {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin: 20px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .prank-title {
+                font-size: 2.2rem;
+            }
+            
+            .prank-subtitle {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul li {
+                margin-left: 15px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .movie-title {
+                font-size: 1.8rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .prank-card {
+                padding: 20px;
+            }
+            
+            .prank-title {
+                font-size: 1.8rem;
+            }
+            
+            .chappal-container {
+                gap: 15px;
+            }
+            
+            .chappal {
+                width: 70px;
+                height: 35px;
+            }
+        }
+        
+        /* Page Transitions */
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Header -->
+        <header>
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <i class="fas fa-film"></i>
+                        <h1>GRAND CINEMAS</h1>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li><a href="#" class="active">Home</a></li>
+                            <li><a href="#">Movies</a></li>
+                            <li><a href="#">Showtimes</a></li>
+                            <li><a href="#">Promotions</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <div class="user-actions">
+                        <a href="#"><i class="fas fa-search"></i></a>
+                        <a href="#"><i class="fas fa-user"></i></a>
+                        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Experience Movie Magic</h2>
+                    <p>Book your tickets now for the most anticipated movie of the year - Tanvi the Great! Don't miss this cinematic masterpiece on the big screen.</p>
+                    <a href="#" class="btn" id="book-now-btn">Book Tickets Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Movie Section -->
+        <section class="featured-movie">
+            <div class="container">
+                <h2 class="section-title">Now Showing</h2>
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT4civmUeBubM5srICi5tlzbJz2FS2ryHL7jNT-3eXxMd90jB0s" alt="Tanvi the Great Movie Poster">
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">TANVI THE GREAT</h3>
+                        <div class="movie-meta">
+                            <span class="movie-rating">PG-13</span>
+                            <span>2h 18min</span>
+                            <span>Drama, Adventure</span>
+                        </div>
+                        <p class="movie-description">
+                            Autistic woman Tanvi Raina pursues her late father's dream to salute the flag at Siachen Glacier. Faces barriers in military service due to autism. Remains determined to complete mission.
+                        </p>
+                        <div class="showtimes">
+                            <div class="showtime">12:00 PM</div>
+                            <div class="showtime">3:15 PM</div>
+                            <div class="showtime">6:30 PM</div>
+                            <div class="showtime">9:45 PM</div>
+                        </div>
+                        <a href="#" class="btn" id="featured-book-btn">Book Tickets</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-content">
+                    <div class="footer-column">
+                        <h3>Cinemark SLC</h3>
+                        <p>Experience movies like never before in our state-of-the-art theaters with luxury seating and immersive sound.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Movies</a></li>
+                            <li><a href="#">Showtimes</a></li>
+                            <li><a href="#">Promotions</a></li>
+                            <li><a href="#">Gift Cards</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Information</h3>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to get special offers and updates on new releases.</p>
+                        <form>
+                            <input type="email" placeholder="Your Email" style="padding: 10px; width: 100%; margin: 10px 0; border-radius: 5px; border: none;">
+                            <button type="submit" class="btn" style="width: 100%; padding: 10px;">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="copyright">
+                    <p>&copy; 2023 Grand Cinemas. All Rights Reserved. This is a fictional website created for entertainment purposes only.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Prank Page -->
+    <div id="prank-page" class="page">
+        <div class="prank-container">
+            <div class="prank-card">
+                <div class="prank-icon">
+                    <i class="fas fa-user-secret"></i>
+                </div>
+                <h2 class="prank-subtitle">Compliance Violation : Level 5</h2>
+                <h2 class="prank-subtitle">Goldman Sach Security Audit</h2>
+                
+                <div class="hacker-animation">
+                    <div class="terminal">
+                        <p class="terminal-line">> Running Goldman Sach security audit...</p>
+                        <p class="terminal-line">> Scanning employee: Hardyyy - Compliance Trainer</p>
+                        <p class="terminal-line">> WARNING: Multiple compliance violations found!</p>
+                        <p class="terminal-line">> Critical vulnerability: Clicked untrusted link</p>
+                        <p class="terminal-line">> Accessing employee records...</p>
+                        <p class="terminal-line">> Found evidence of footwear-related misconduct</p>
+                        <p class="terminal-line">> Color coordination obsession confirmed</p>
+                        <p class="terminal-line">> Perfume usage exceeding company policy</p>
+                    </div>
+                </div>
+                
+                <p class="prank-message">
+                    Looks like Goldman Sach's compliance trainer just failed her own training!<br>
+                    How can you protect the company from hackers when you can't even protect yourself?
+                </p>
+                
+                <div class="compliance-roast">
+                    <h3>Compliance Violation Report:</h3>
+                    <ul>
+                        <li>✅ Clicked on suspicious movie ticket link</li>
+                        <li>✅ Failed to verify website authenticity</li>
+                        <li>✅ Ignored all security training protocols</li>
+                        <li>✅ Fell for obvious social engineering tactic</li>
+                        <li>✅ Compromised company's servers</li>
+                    </ul>
+                </div>
+                
+                <!-- Troll Section -->
+                <div class="fact-section">
+                    <h3>Additional Findings from Goldman Sach Audit</h3>
+                    
+                    <div class="fact-item">
+                        <div class="fact-title">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h4>Compliance Training Effectiveness</h4>
+                        </div>
+                        <div class="fact-content">
+                            <p>Audit reveals that while you train new employees at Goldman Sach on compliance, you seem to have skipped your own training!</p>
+                            <p><strong>Remember:</strong> Compliance is like matching your shoes(chappals) - it only works when you pay attention to the details!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="fact-item">
+                        <div class="fact-title">
+                            <i class="fas fa-shoe-prints"></i>
+                            <h4>Footwear Procurement Scandal</h4>
+                        </div>
+                        <div class="fact-content">
+                            <p>The security logs say you blamed me for buying those chappals!! Now your mother thinks I'm the one encouraging you to buy them? Seriously?</p>
+                            <div class="chappal-container">
+                                <div class="chappal">
+                                    <div class="chappal-strap"></div>
+                                </div>
+                                <div class="chappal">
+                                    <div class="chappal-strap"></div>
+                                </div>
+                            </div>
+                            <p>These are the dangerous chappals that caused all the trouble! This is your official warning to make sure the right person is blamed for the chappals.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="fact-item">
+                        <div class="fact-title">
+                            <i class="fas fa-tshirt"></i>
+                            <h4>Color Coordination Compliance</h4>
+                        </div>
+                        <div class="fact-content">
+                            <p>Surveillance confirms your impressive dedication to matching clothes and footwear colors. This level of commitment is admirable!</p>
+                            <div class="color-match-example">
+                                <div class="outfit">
+                                    <div class="shirt"></div>
+                                    <div class="pants"></div>
+                                    <div class="shoes"></div>
+                                    <p>Match!</p>
+                                </div>
+                                <div class="outfit">
+                                    <div class="shirt"></div>
+                                    <div class="pants"></div>
+                                    <div class="shoes"></div>
+                                    <p>Match!</p>
+                                </div>
+                                <div class="outfit">
+                                    <div class="shirt"></div>
+                                    <div class="pants"></div>
+                                    <div class="shoes"></div>
+                                    <p>Match!</p>
+                                </div>
+                            </div>
+                            <p>If only you applied this level of attention to verifying website links, Goldman Sach would be hacker-proof!!</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Perfume Compliance Violation Section -->
+                    <div class="fact-item">
+                        <div class="fact-title">
+                            <i class="fas fa-wind"></i>
+                            <h4>Fragrance Compliance Violation</h4>
+                        </div>
+                        <div class="fact-content">
+                            <p>Sensors detected excessive perfume usage in the workplace! While company appreciate your love for fragrances, Goldman Sach's scent policy clearly states:</p>
+                            
+                            <div class="compliance-violation">
+                                <p>"Employee fragrances must not be detectable beyond a 1-meter radius"</p>
+                                <p>Your scent was detected throughout the entire floor where you're working! 🚨</p>
+                            </div>
+                            
+                            <div class="perfume-showcase">
+                                
+                                <div class="perfume-bottle">
+                                    <div class="bottle">
+                                        <div class="bottle-neck"></div>
+                                        <div class="bottle-body"></div>
+                                        <div class="perfume-liquid" style="background: linear-gradient(to bottom, #e6bcad, #d4a798);"></div>
+                                    </div>
+                                    <p>Code Violation</p>
+                                </div>
+                                <div class="perfume-bottle">
+                                    <div class="bottle">
+                                        <div class="bottle-neck"></div>
+                                        <div class="bottle-body"></div>
+                                        <div class="perfume-liquid" style="background: linear-gradient(to bottom, #c9a0dc, #b18bd6);"></div>
+                                    </div>
+                                    <p>Policy Infraction</p>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="fact-item">
+                        <div class="fact-title">
+                            <i class="fas fa-heart"></i>
+                            <h4>Important Compliance Reminder</h4>
+                        </div>
+                        <div class="fact-content">
+                            <p>I know you don't love compliance work, but remember:</p>
+                            <p style="text-align: center; font-style: italic; margin: 15px 0;">
+                                "Compliance is like oxygen - you don't notice it until it's gone,<br>
+                                and then you realize you REALLY need it to survive!"
+                            </p>
+                            <p>Without compliance employee like you, companies would descend into chaos! Your work matters, even if it feels tedious sometimes.</p>
+                            <p>Implementing laws is key ensuring your organization upholds Honesty.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <!-- Samosa demand section -->
+                <div class="bribery">
+                    <h3 class="bribery-title">Confidentiality Agreement</h3>
+                    <div class="bribery-content">
+                        <p>Don't worry, I'll keep this security breach confidential...</p>
+                        <p>IF you provide:</p>
+                        <div class="food-emoji">
+                            🥟 Samosa Treat + 🌯 Mexican Bowl
+                        </div>
+                        <p>Otherwise, I might have to tell everyone about your little compliance slip-up! 😜</p>
+                    </div>
+                </div>
+                
+                <a href="#" class="btn" id="back-btn">Back to Safety</a>
+                
+                <p class="prank-footer">
+                    This website is completely harmless. No data was collected or compromised.<br>
+                    But seriously, watch out for those movie ticket phishing scams!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get page elements
+        const homePage = document.getElementById('home-page');
+        const prankPage = document.getElementById('prank-page');
+        const bookBtns = document.querySelectorAll('.btn');
+        const backBtn = document.getElementById('back-btn');
+        
+        // Function to show prank page
+        function showPrankPage() {
+            homePage.classList.remove('active');
+            prankPage.classList.add('active');
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+            
+            // Trigger terminal animations
+            document.querySelectorAll('.terminal-line').forEach((line, index) => {
+                setTimeout(() => {
+                    line.style.animation = `typing 4s steps(40, end) ${index}s, blink-caret 0.75s step-end infinite ${index}s`;
+                    line.style.width = '100%';
+                }, index * 1000);
+            });
+        }
+        
+        // Function to show home page
+        function showHomePage() {
+            prankPage.classList.remove('active');
+            homePage.classList.add('active');
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+        
+        // Event listeners
+        bookBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Add loading effect
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                setTimeout(() => {
+                    showPrankPage();
+                    this.innerHTML = originalText;
+                }, 1500);
+            });
+        });
+        
+        backBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Securing...';
+            setTimeout(() => {
+                showHomePage();
+                this.innerHTML = 'Back to Safety';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
