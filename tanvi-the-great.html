@@ -540,8 +540,78 @@
             top: 15px;
             left: 15px;
         }
-        
+
         .color-match-example {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            gap: 20px;
+        }
+        
+        .outfit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .shirt {
+            width: 60px;
+            height: 80px;
+            background: #ff6b6b;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 5px;
+        }
+        
+        .pants {
+            width: 60px;
+            height: 70px;
+            background: #4ecdc4;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .shoes {
+            width: 70px;
+            height: 20px;
+            background: #ff6b6b;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        
+        /* Updated Color Coordination Section */
+        /* First Outfit - White shirt, Sky blue pants/shoes */
+        .outfit:nth-child(1) .shirt {
+            background: #ffffff; /* White */
+        }
+        .outfit:nth-child(1) .pants {
+            background: #87CEEB; /* Sky blue */
+        }
+        .outfit:nth-child(1) .shoes {
+            background: #ffffff; /* Sky blue */
+        }
+        
+        /* Middle Outfit - Full Orange */
+        .outfit:nth-child(2) .shirt {
+            background: #FFA500; /* Orange */
+        }
+        .outfit:nth-child(2) .pants {
+            background: #FFA500; /* Orange */
+        }
+        .outfit:nth-child(2) .shoes {
+            background: #FFA500; /* Orange */
+        }
+        
+        /* Last Outfit - Yellow shirt, Blue jeans, Blue shoes */
+        .outfit:nth-child(3) .shirt {
+            background: #FFD700; /* Yellow */
+        }
+        .outfit:nth-child(3) .pants {
+            background: #1E90FF; /* Blue jeans color */
+        }
+        .outfit:nth-child(3) .shoes {
+            background: #1E90FF; /* Blue */
+        }
+        
+        /* .color-match-example {
             display: flex;
             justify-content: center;
             margin: 20px 0;
@@ -592,7 +662,7 @@
         .outfit:nth-child(3) .shoes {
             background: #ffe66d;
         }
-        
+         */
         /* Perfume Section Styles */
         .compliance-violation {
             background: rgba(255, 215, 0, 0.1);
@@ -681,6 +751,113 @@
         .violation-notice li {
             margin-bottom: 8px;
             font-size: 1rem;
+        }
+        
+        /* Food Tampering Section */
+        .food-tampering {
+            background: rgba(150, 50, 50, 0.15);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px dashed #ff6b6b;
+        }
+        
+        .food-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: #ff6b6b;
+        }
+        
+        .food-title i {
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+        
+        .food-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+        
+        .food-bowl {
+            text-align: center;
+            position: relative;
+            width: 200px;
+        }
+        
+        .bowl {
+            width: 150px;
+            height: 80px;
+            background: #e0e0e0;
+            border-radius: 0 0 75px 75px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .rice {
+            position: absolute;
+            width: 130px;
+            height: 60px;
+            background: #f8f3e6;
+            border-radius: 0 0 65px 65px;
+            bottom: 0;
+            left: 10px;
+        }
+        
+        .tofu {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            bottom: 15px;
+            left: 40px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+        
+        .chicken-piece {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: #e6bcad;
+            border-radius: 50%;
+            bottom: 20px;
+            right: 40px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+            z-index: 1;
+            display: none;
+        }
+        
+        .hidden-chicken .chicken-piece {
+            display: block;
+        }
+        
+        .food-bowl .caption {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .divine-warning {
+            background: rgba(255, 215, 0, 0.15);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #ffd700;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        .divine-warning i {
+            color: #ffd700;
+            font-size: 2rem;
+            margin-bottom: 10px;
         }
         
         /* Secret Message Section */
@@ -821,6 +998,19 @@
                 width: 70px;
                 height: 35px;
             }
+            
+            .food-container {
+                gap: 20px;
+            }
+            
+            .food-bowl {
+                width: 150px;
+            }
+            
+            .bowl {
+                width: 120px;
+                height: 60px;
+            }
         }
         
         /* Page Transitions */
@@ -885,17 +1075,17 @@
                         <h3 class="movie-title">TANVI THE GREAT</h3>
                         <div class="movie-meta">
                             <span class="movie-rating">PG-13</span>
-                            <span>2h 18min</span>
+                            <span>2h 38min</span>
                             <span>Drama, Adventure</span>
                         </div>
                         <p class="movie-description">
                             Autistic woman Tanvi Raina pursues her late father's dream to salute the flag at Siachen Glacier. Faces barriers in military service due to autism. Remains determined to complete mission.
                         </p>
                         <div class="showtimes">
-                            <div class="showtime">12:00 PM</div>
-                            <div class="showtime">3:15 PM</div>
-                            <div class="showtime">6:30 PM</div>
-                            <div class="showtime">9:45 PM</div>
+                            
+                            <div class="showtime">4:30 PM</div>
+                            
+                            <div class="showtime">10:45 PM</div>
                         </div>
                         <a href="#" class="btn" id="featured-book-btn">Book Tickets</a>
                     </div>
@@ -960,19 +1150,20 @@
                 <div class="prank-icon">
                     <i class="fas fa-user-secret"></i>
                 </div>
-                <h2 class="prank-subtitle">Compliance Violation : Level 5</h2>
+                <h1 class="prank-title">COMPLIANCE FAILURE DETECTED!</h1>
                 <h2 class="prank-subtitle">Goldman Sach Security Audit</h2>
                 
                 <div class="hacker-animation">
                     <div class="terminal">
-                        <p class="terminal-line">> Running Goldman Sach security audit...</p>
-                        <p class="terminal-line">> Scanning employee: Hardyyy - Compliance Trainer</p>
+                        <p class="terminal-line">> Running Goldman Sach's security audit...</p>
+                        <p class="terminal-line">> Scanning employee: Hardyyy Compliance Trainer</p>
                         <p class="terminal-line">> WARNING: Multiple compliance violations found!</p>
                         <p class="terminal-line">> Critical vulnerability: Clicked untrusted link</p>
                         <p class="terminal-line">> Accessing employee records...</p>
                         <p class="terminal-line">> Found evidence of footwear-related misconduct</p>
                         <p class="terminal-line">> Color coordination obsession confirmed</p>
                         <p class="terminal-line">> Perfume usage exceeding company policy</p>
+                        <p class="terminal-line">> FOOD TAMPERING PLOT DETECTED!!</p>
                     </div>
                 </div>
                 
@@ -988,11 +1179,11 @@
                         <li>✅ Failed to verify website authenticity</li>
                         <li>✅ Ignored all security training protocols</li>
                         <li>✅ Fell for obvious social engineering tactic</li>
-                        <li>✅ Compromised company's servers</li>
+                        <li>✅ Compromised Goldman Sach's servers</li>
                     </ul>
                 </div>
                 
-                <!-- Troll Section -->
+                <!-- Personalized Troll Section -->
                 <div class="fact-section">
                     <h3>Additional Findings from Goldman Sach Audit</h3>
                     
@@ -1002,7 +1193,7 @@
                             <h4>Compliance Training Effectiveness</h4>
                         </div>
                         <div class="fact-content">
-                            <p>Audit reveals that while you train new employees at Goldman Sach on compliance, you seem to have skipped your own training!</p>
+                            <p>Our audit reveals that while you train new employees at Goldman Sach on compliance, you seem to have skipped your own training!</p>
                             <p><strong>Remember:</strong> Compliance is like matching your shoes(chappals) - it only works when you pay attention to the details!</p>
                         </div>
                     </div>
@@ -1032,7 +1223,7 @@
                             <h4>Color Coordination Compliance</h4>
                         </div>
                         <div class="fact-content">
-                            <p>Surveillance confirms your impressive dedication to matching clothes and footwear colors. This level of commitment is admirable!</p>
+                            <p>Our surveillance confirms your impressive dedication to matching clothes and footwear colors. This level of commitment is admirable!</p>
                             <div class="color-match-example">
                                 <div class="outfit">
                                     <div class="shirt"></div>
@@ -1053,18 +1244,18 @@
                                     <p>Match!</p>
                                 </div>
                             </div>
-                            <p>If only you applied this level of attention to verifying website links, Goldman Sach would be hacker-proof!!</p>
+                            <p>If only you applied this level of attention to verifying website links, Goldman would be hacker-proof!</p>
                         </div>
                     </div>
                     
-                    <!-- Perfume Compliance Violation Section -->
+                    <!-- Perfume Section -->
                     <div class="fact-item">
                         <div class="fact-title">
                             <i class="fas fa-wind"></i>
                             <h4>Fragrance Compliance Violation</h4>
                         </div>
                         <div class="fact-content">
-                            <p>Sensors detected excessive perfume usage in the workplace! While company appreciate your love for fragrances, Goldman Sach's scent policy clearly states:</p>
+                            <p>Sensors detected excessive perfume usage in the workplace! While we appreciate your love for fragrances, Goldman's scent policy clearly states:</p>
                             
                             <div class="compliance-violation">
                                 <p>"Employee fragrances must not be detectable beyond a 1-meter radius"</p>
@@ -1091,6 +1282,56 @@
                                 </div>
                             </div>
                             
+                        </div>
+                    </div>
+                    
+                    <!-- Food Tampering Section -->
+                    <div class="fact-item">
+                        <div class="fact-title">
+                            <i class="fas fa-utensils"></i>
+                            <h4>Food Tampering Violation</h4>
+                        </div>
+                        <div class="fact-content">
+                            <p>Surveillance has uncovered a serious compliance breach: You threatened to contaminate a vegetarian's tofu rice bowl with chicken! This is a clear violation of:</p>
+                            
+                            <div class="compliance-violation">
+                                <p>"Company Ethics Code: Section 7.3 - Respect for Dietary Choices"</p>
+                                <p>And the universal rule: Don't mess with people's food! 🍚🐔</p>
+                            </div>
+                            
+                            <div class="food-container">
+                                <div class="food-bowl">
+                                    <div class="bowl">
+                                        <div class="rice"></div>
+                                        <div class="tofu"></div>
+                                    </div>
+                                    <div class="caption">Safe Tofu Bowl</div>
+                                </div>
+                                <div class="food-bowl hidden-chicken">
+                                    <div class="bowl">
+                                        <div class="rice"></div>
+                                        <div class="tofu"></div>
+                                        <div class="chicken-piece"></div>
+                                    </div>
+                                    <div class="caption">Chicken-Contaminated Bowl</div>
+                                </div>
+                            </div>
+                            
+                            <div class="violation-notice">
+                                <h5>Violation Details:</h5>
+                                <ul>
+                                    <li>✅ Planned deception of vegetarian friend</li>
+                                    <li>✅ Intentional contamination of food</li>
+                                    <li>✅ Disregard for ethical dietary practices</li>
+                                    <li>✅ Potential to cause culinary trauma</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="divine-warning">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <p><strong>DIVINE WARNING:</strong> If you actually put chicken in my tofu bowl, even the Compliance God Shivji won't forgive you! ⚖️</p>
+                            </div>
+                            
                             
                         </div>
                     </div>
@@ -1101,7 +1342,7 @@
                             <h4>Important Compliance Reminder</h4>
                         </div>
                         <div class="fact-content">
-                            <p>I know you don't love compliance work, but remember:</p>
+                            <p>We know you don't love compliance work, but remember:</p>
                             <p style="text-align: center; font-style: italic; margin: 15px 0;">
                                 "Compliance is like oxygen - you don't notice it until it's gone,<br>
                                 and then you realize you REALLY need it to survive!"
@@ -1113,7 +1354,6 @@
                 </div>
                 
                 
-                
                 <!-- Samosa demand section -->
                 <div class="bribery">
                     <h3 class="bribery-title">Confidentiality Agreement</h3>
@@ -1121,7 +1361,7 @@
                         <p>Don't worry, I'll keep this security breach confidential...</p>
                         <p>IF you provide:</p>
                         <div class="food-emoji">
-                            🥟 Samosa Treat + 🌯 Mexican Bowl
+                           🌯 Mexican Bowl (VEGETARIAN!!)
                         </div>
                         <p>Otherwise, I might have to tell everyone about your little compliance slip-up! 😜</p>
                     </div>
